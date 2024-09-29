@@ -1,0 +1,33 @@
+@use "./util/index" as util;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: util.rem(16);
+  font-family: "Montserrat", sans-serif;
+  color: util.$default-font-color;
+  width: 100%;
+  min-height: 100%;
+  @include util.breakpoint(medium) {
+    font-size: util.rem(22);
+  }
+}
+
+body {
+  padding: 20px;
+  background-color: util.$background-color;
+  section {
+    background-color: util.$container-bgcolor;
+    width: 90%;
+    max-width: util.rem(700);
+    margin: auto;
+    border: util.rem(1) solid util.$container-bordercolor;
+    border-radius: util.rem(10);
+  }
+}
