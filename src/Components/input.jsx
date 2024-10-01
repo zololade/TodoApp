@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 let inputId = 0;
-export const Input = ({ setValue }) => {
+export const Input = ({ value, setValue }) => {
   const [store, setStore] = useState("");
 
   const handleSubmit = (e) => {
@@ -10,11 +10,10 @@ export const Input = ({ setValue }) => {
       return;
     }
     setValue((currentValue) => {
-      return [
-        ...currentValue,
-        { todoData: store, id: inputId, checker: false },
-      ];
+      return [...currentValue, { todoData: store, id: inputId }];
     });
+    const dataToStore = JSON.stringify(value);
+    localStorage.setItem("myTodoList", dataToStore);
     inputId++;
     setStore("");
   };
@@ -57,4 +56,5 @@ export const Input = ({ setValue }) => {
 
 Input.propTypes = {
   setValue: PropTypes.func.isRequired,
+  value: PropTypes.array.isRequired,
 };

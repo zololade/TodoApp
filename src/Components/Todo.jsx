@@ -7,11 +7,11 @@ export const Todo = ({ value, setValue }) => {
       const newObject = prevValue.filter((item) => {
         return idToRemove !== item.id;
       });
-      const newArray = newObject.map((item, i) => ({
+      const newArray = newObject.map((item) => ({
         ...item,
-        id: i,
-        checker: true,
       }));
+      const dataToStore = JSON.stringify(newArray);
+      localStorage.setItem("myTodoList", dataToStore);
       return newArray;
     });
   };
@@ -23,7 +23,6 @@ export const Todo = ({ value, setValue }) => {
           <div className="item" key={index.id}>
             <input
               type="checkbox"
-              checked={index.checker}
               onChange={handleClick}
               id={index.id}
               tabIndex={0}

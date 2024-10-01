@@ -1,13 +1,21 @@
 import "./scss/style.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Input } from "./Components";
 
 function App() {
   const [value, setValue] = useState([]);
+
+  const storedData = JSON.parse(localStorage.getItem("myTodoList"));
+
+  useEffect(() => {
+    if (!Array.isArray(storedData)) return;
+    setValue(storedData);
+  }, []);
+
   return (
     <>
       <main className="main">
-        <Input setValue={setValue} />
+        <Input value={value} setValue={setValue} />
         <Container value={value} setValue={setValue} />
       </main>
     </>

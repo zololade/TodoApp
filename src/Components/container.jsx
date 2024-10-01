@@ -1,6 +1,12 @@
 import { Todo } from "./Todo";
 import PropTypes from "prop-types";
 export const Container = ({ value, setValue }) => {
+  const handleClick = () => {
+    setValue([]);
+    const dataToStore = JSON.stringify([]);
+    localStorage.setItem("myTodoList", dataToStore);
+  };
+
   return (
     <section className="listContainer">
       <div className="listTitle">
@@ -11,6 +17,7 @@ export const Container = ({ value, setValue }) => {
           title="Clear list"
           aria-label="Clear the list"
           tabIndex={0}
+          onClick={handleClick}
         >
           Clear
         </button>
