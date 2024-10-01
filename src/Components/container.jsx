@@ -2,9 +2,13 @@ import { Todo } from "./Todo";
 import PropTypes from "prop-types";
 export const Container = ({ value, setValue }) => {
   const handleClick = () => {
-    setValue([]);
-    const dataToStore = JSON.stringify([]);
-    localStorage.setItem("myTodoList", dataToStore);
+    if (confirm("Clear All Items")) {
+      setValue([]);
+      const dataToStore = JSON.stringify([]);
+      localStorage.setItem("myTodoList", dataToStore);
+    } else {
+      return;
+    }
   };
 
   return (
