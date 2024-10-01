@@ -2,18 +2,20 @@ import PropTypes from "prop-types";
 
 export const Todo = ({ value, setValue }) => {
   const handleClick = (e) => {
-    const idToRemove = parseInt(e.target.id);
-    setValue((prevValue) => {
-      const newObject = prevValue.filter((item) => {
-        return idToRemove !== item.id;
+    setTimeout(() => {
+      const idToRemove = parseInt(e.target.id);
+      setValue((prevValue) => {
+        const newObject = prevValue.filter((item) => {
+          return idToRemove !== item.id;
+        });
+        const newArray = newObject.map((item) => ({
+          ...item,
+        }));
+        const dataToStore = JSON.stringify(newArray);
+        localStorage.setItem("myTodoList", dataToStore);
+        return newArray;
       });
-      const newArray = newObject.map((item) => ({
-        ...item,
-      }));
-      const dataToStore = JSON.stringify(newArray);
-      localStorage.setItem("myTodoList", dataToStore);
-      return newArray;
-    });
+    }, 1000);
   };
 
   return (

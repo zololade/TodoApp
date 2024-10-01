@@ -38,6 +38,7 @@
       min-height: util.rem(48);
       cursor: pointer;
       margin-right: 1.5rem;
+      accent-color: util.$background-color;
     }
 
     input[type="checkbox"]:focus + label {
