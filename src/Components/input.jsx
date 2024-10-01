@@ -35,6 +35,7 @@ export const Input = ({ value, setValue }) => {
           size={"40"}
           placeholder="Add item"
           tabIndex={0}
+          autoComplete="off"
           value={store}
           onChange={handleOnchange}
         />
