@@ -8,7 +8,7 @@ function App() {
     <>
       <main className="main">
         <Input setValue={setValue} />
-        <Container value={value} />
+        <Container value={value} setValue={setValue} />
       </main>
     </>
   );

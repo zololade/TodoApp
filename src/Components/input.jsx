@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-
+let inputId = 0;
 export const Input = ({ setValue }) => {
   const [store, setStore] = useState("");
 
@@ -10,8 +10,12 @@ export const Input = ({ setValue }) => {
       return;
     }
     setValue((currentValue) => {
-      return [...currentValue, store];
+      return [
+        ...currentValue,
+        { todoData: store, id: inputId, checker: false },
+      ];
     });
+    inputId++;
     setStore("");
   };
 
