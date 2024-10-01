@@ -12,8 +12,6 @@ export const Input = ({ value, setValue }) => {
     setValue((currentValue) => {
       return [...currentValue, { todoData: store, id: inputId }];
     });
-    const dataToStore = JSON.stringify(value);
-    localStorage.setItem("myTodoList", dataToStore);
     inputId++;
     setStore("");
   };
@@ -24,7 +22,8 @@ export const Input = ({ value, setValue }) => {
       return currentValue;
     });
   };
-
+  const dataToStore = JSON.stringify(value);
+  localStorage.setItem("myTodoList", dataToStore);
   return (
     <section className="newItemEntry">
       <form id="itemEntry" onSubmit={handleSubmit}>
